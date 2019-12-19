@@ -1,0 +1,136 @@
+{
+    "name": "Mailgun",
+    "description": "<p>Mailgun provides a web service for integrating email inboxes into apps. Providing APIs for sending, receiving, and storing APis, including tools for managing delivery, real-time integration, organizing, routing, and tracking on emails. Malign provides a free trial to learn about services, and pay as you go, unit based pricing to continue from there, including volume pricing for increased usage.<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/612-mail_gun.jpg",
+    "tags": [
+        "api provider",
+        "emails",
+        "have api",
+        "messages",
+        "relative data",
+        "service api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/mailgun\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Mailgun API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/612-mail_gun.jpg",
+            "humanURL": "http:\/\/mailgun.net",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/mailgun-api.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/mailgun-api-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": ".NET Library",
+            "url": "http:\/\/documentation.mailgun.com\/libraries.html#c"
+        },
+        {
+            "type": "Base",
+            "url": "https:\/\/api.mailgun.net"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.mailgun.net"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "https:\/\/twitter.com\/unbounce"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/mailgun"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/mailgun"
+        },
+        {
+            "type": "Developers",
+            "url": "http:\/\/documentation.mailgun.com\/"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@mailgun.com"
+        },
+        {
+            "type": "FAQ",
+            "url": "http:\/\/documentation.mailgun.com\/faqs.html"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/mailgun"
+        },
+        {
+            "type": "Heroku Add-On",
+            "url": "https:\/\/addons.heroku.com\/mailgun"
+        },
+        {
+            "type": "Java Library",
+            "url": "http:\/\/documentation.mailgun.com\/libraries.html#java"
+        },
+        {
+            "type": "Node.js Library",
+            "url": "http:\/\/documentation.mailgun.com\/libraries.html#node-js"
+        },
+        {
+            "type": "PHP Library",
+            "url": "http:\/\/documentation.mailgun.com\/libraries.html#php"
+        },
+        {
+            "type": "Pricing",
+            "url": "http:\/\/www.mailgun.com\/pricing"
+        },
+        {
+            "type": "Privacy",
+            "url": "http:\/\/www.mailgun.com\/privacy"
+        },
+        {
+            "type": "Python Library",
+            "url": "http:\/\/documentation.mailgun.com\/libraries.html#python"
+        },
+        {
+            "type": "Ruby Library",
+            "url": "http:\/\/documentation.mailgun.com\/libraries.html#ruby"
+        },
+        {
+            "type": "Registration",
+            "url": "https:\/\/www.mailgun.com\/signup"
+        },
+        {
+            "type": "Stack Overflow",
+            "url": "https:\/\/stackoverflow.com\/questions\/tagged\/mailgun"
+        },
+        {
+            "type": "Terms of Service",
+            "url": "http:\/\/www.mailgun.com\/terms"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/#!\/mail_gun"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/mailgun.net"
+        },
+        {
+            "type": "Wordpress Plugin",
+            "url": "https:\/\/wordpress.org\/plugins\/mailgun\/"
+        }
+    ]
+}
