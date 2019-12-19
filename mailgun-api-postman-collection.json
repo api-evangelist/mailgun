@@ -1,0 +1,1323 @@
+{
+    "id": "092af82500a5575e817a5c477753457b",
+    "name": "Mailgun API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "70b0c43f87d5214934cb1a33bfcbf177",
+            "name": "Bounces",
+            "url": "httpsapi.mailgun.netv2\/bounces\/",
+            "description": "Fetches the list of bounces.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "limit",
+                    "description": "Maximum number of records to return. (100 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "skip",
+                    "description": "Number of records to skip. (0 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "b8969fae3772020fd327bf6d7450444b",
+            "name": "Add Bounce",
+            "url": "httpsapi.mailgun.netv2\/bounces\/",
+            "description": "Adds a permanent bounce to the bounces table. Updates the existing record if already here.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "code",
+                    "description": "Error code (default 550)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "error",
+                    "description": "Error description, (default is empty)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "3c4b348c6ee150a3fdbbc19674331eb8",
+            "name": "Delete Bounce",
+            "url": "httpsapi.mailgun.netv2\/bounces\/{address}",
+            "description": "Clears a bounce event.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "e9c3b3ffd475081d23375fa912473b72",
+            "name": "Bounce",
+            "url": "httpsapi.mailgun.netv2\/bounces\/{address}",
+            "description": "Fetches a single bounce event by a given email address. This is useful to check if a given email address has bounced before.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "The email address to get bounce request for.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "226fc3d38d1052a40bc351913e15452d",
+            "name": "Complaints",
+            "url": "httpsapi.mailgun.netv2\/complaints\/",
+            "description": "Fetches the list of complaints.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "limit",
+                    "description": "Maximum number of records to return. (100 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "skip",
+                    "description": "Number of records to skip. (0 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "1f617bfd09c4d1190b63099baeecd81a",
+            "name": "Add Complaint",
+            "url": "httpsapi.mailgun.netv2\/complaints\/",
+            "description": "Adds an address to the complaints table.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "8b62d8bf6d7ef497fc350e0c4af5e5d9",
+            "name": "Delete Complaint",
+            "url": "httpsapi.mailgun.netv2\/complaints\/{address}",
+            "description": "Removes a given spam complaint.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "18d151519121ee0535c509f2a5c3b668",
+            "name": "Complaint",
+            "url": "httpsapi.mailgun.netv2\/complaints\/{address}",
+            "description": "Fetches a single spam complaint by a given email address. This is useful to check if a particular user has complained.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "c04db0fad6454f3d2d41128be20a2ca9",
+            "name": "Create List",
+            "url": "httpsapi.mailgun.netv2\/lists",
+            "description": "Creates a new mailing list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "access_level",
+                    "description": "List access level, one of: readonly (default), members, everyone",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "description",
+                    "description": "A description",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "name",
+                    "description": "Mailing list name, e.g. Developers (optional)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "a330323bca73fa5f0111f2973af97fed",
+            "name": "Lists",
+            "url": "httpsapi.mailgun.netv2\/lists\/",
+            "description": "Returns a list of mailing lists under your account.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "access_level",
+                    "description": "List access level, one of: readonly (default), members, everyone",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "description",
+                    "description": "A description",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Maximum number of records to return. (100 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "namespace_id",
+                    "description": "New name, e.g. My newsletter (",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "skip",
+                    "description": "Number of records to skip. (0 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "98f0c45cb6d506852a714a5a46f1446e",
+            "name": "Delete List",
+            "url": "httpsapi.mailgun.netv2\/lists\/{address}",
+            "description": "Deletes a mailing list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "d754eece6b32435dad799dc72b17e141",
+            "name": "List",
+            "url": "httpsapi.mailgun.netv2\/lists\/{address}",
+            "description": "Returns a single mailing list by a given address.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "7fe617eaf102f130db18f0b8c4a3add2",
+            "name": "Update List",
+            "url": "httpsapi.mailgun.netv2\/lists\/{address}",
+            "description": "Update mailing list properties, such as address, description or name",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "0c8a4f5409cb4c29eb9764a2ea148381",
+            "name": "Add To List",
+            "url": "httpsapi.mailgun.netv2\/lists\/{address}\/members",
+            "description": "Adds a member to the mailing list.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "name",
+                    "description": "Mailing list name, e.g. Developers (optional)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "subscribed",
+                    "description": "yes to add as subscribed (default), no as unsubscribed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "upsert",
+                    "description": "yes to update member if present, no to raise error in case of a duplicate member (default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "vars",
+                    "description": "JSON-encoded dictionary string with arbitrary parameters, e.g. {gender:female,age:27}",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "3b815520015044bc791b0292e4b60ae7",
+            "name": "List Members",
+            "url": "httpsapi.mailgun.netv2\/lists\/{address}\/members\/",
+            "description": "Fetches the list of mailing list members.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "limit",
+                    "description": "Maximum number of records to return. (100 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "skip",
+                    "description": "Number of records to skip. (0 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "subscribed",
+                    "description": "yes to add as subscribed (default), no as unsubscribed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "cc566aded495db4115bae5f6e892b3e0",
+            "name": "List Member",
+            "url": "httpsapi.mailgun.netv2\/lists\/{address}\/members\/{member_address}",
+            "description": "Retrieves a mailing list member.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "member_address",
+                    "description": "Email address on the list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "f9efb9af5a7c99544162e4518b124332",
+            "name": "Posts Mime Message",
+            "url": "httpsapi.mailgun.netv2\/messages.mime",
+            "description": "Posts a message in MIME format. Note: you will need to build a MIME string yourself. Use a MIME library for your programming language to do this. Pass the resulting MIME string as message parameter.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "h:X-My-Header",
+                    "description": "h: prefix followed by an arbitrary value allows to appendna custom MIME header to the message (X-My-Headernin this case). For example, h:Reply-To to specify Reply-Tonaddress.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "message",
+                    "description": "MIME string of the message. Make sure to usenmultipart\/form-data to send this as a file upload.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:campaign",
+                    "description": "Id of the campaign the message belongs to. SeenCampaign Analytics for details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:deliverytime",
+                    "description": "Desired time of delivery. See Date Format. Note:nMessages can be scheduled for a maximum of 3 days in thenfuture.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:dkim",
+                    "description": "Enables\/disabled DKIM signatures on per-message basis.nPass yes or no",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:tag",
+                    "description": "Tag string. See Tagging for more information.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:testmode",
+                    "description": "Enables sending in test mode. Pass yes if needed.nSee Sending in Test Mode",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:tracking",
+                    "description": "Toggles tracking on a per-message basis, seenTracking Messages for details. Pass yes or no.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:tracking-clicks",
+                    "description": "Toggles clicks tracking on a per-message basis. Has highernpriority than domain-level setting. Pass yes, nonor htmlonly.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:tracking-opens",
+                    "description": "Toggles opens tracking on a per-message basis. Has highernpriority than domain-level setting. Pass yes or no.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "to",
+                    "description": "Email address of the recipient(s).nExample: &quot;Bob &lt;bob&#64;host.com&gt;&quot;. You can use commas tonseparate multiple recipients.nMake sure to include all To, Cc and Bccnrecipients of the message.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "v:my-var",
+                    "description": "v: prefix followed by an arbitrary name allows tonattach a custom JSON data to the message.nSee Attaching Data to Messages for more information.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "bd627570a75c9d61de00f139ea29fec6",
+            "name": "Send Message",
+            "url": "httpsapi.mailgun.netv2\/messages\/",
+            "description": "Sends a message by assembling it from the components. Note that you can specify most parameters multiple times, HTTP supports this out of the box. This makes sense for parameters like cc, to or attachment.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "attachment",
+                    "description": "File attachment. You can post multiple attachmentnvalues. Important: You must use multipart\/form-datanencoding when sending attachments.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "bcc",
+                    "description": "Same as To but for Bcc",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "cc",
+                    "description": "Same as To but for Cc",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "from",
+                    "description": "Email address for From header",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "h:X-My-Header",
+                    "description": "h: prefix followed by an arbitrary value allows to appendna custom MIME header to the message (X-My-Headernin this case). For example, h:Reply-To to specify Reply-Tonaddress.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "html",
+                    "description": "Body of the message. (HTML version)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "inline",
+                    "description": "Attachment with inline disposition. Can be used tonsend inline images (see example).nYou can post multiple inline values.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:campaign",
+                    "description": "Id of the campaign the message belongs to. SeenCampaign Analytics for details.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:deliverytime",
+                    "description": "Desired time of delivery. See Date Format. Note:nMessages can be scheduled for a maximum of 3 days in thenfuture.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:dkim",
+                    "description": "Enables\/disabled DKIM signatures on per-message basis.nPass yes or no",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:tag",
+                    "description": "Tag string. See Tagging for more information.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:testmode",
+                    "description": "Enables sending in test mode. Pass yes if needed.nSee Sending in Test Mode",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:tracking",
+                    "description": "Toggles tracking on a per-message basis, seenTracking Messages for details. Pass yes or no.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:tracking-clicks",
+                    "description": "Toggles clicks tracking on a per-message basis. Has highernpriority than domain-level setting. Pass yes, nonor htmlonly.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "o:tracking-opens",
+                    "description": "Toggles opens tracking on a per-message basis. Has highernpriority than domain-level setting. Pass yes or no.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "subject",
+                    "description": "Message subject",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "text",
+                    "description": "Body of the message. (text version)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "to",
+                    "description": "Email address of the recipient(s).nExample: &quot;Bob &lt;bob&#64;host.com&gt;&quot;. You can use commas tonseparate multiple recipients.nMake sure to include all To, Cc and Bccnrecipients of the message.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "v:my-var",
+                    "description": "v: prefix followed by an arbitrary name allows tonattach a custom JSON data to the message.nSee Attaching Data to Messages for more information.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "6b16e5b0af00e5249f4234f49f7d27f1",
+            "name": "Message",
+            "url": "httpsapi.mailgun.netv2\/messages\/{id}",
+            "description": "Gets a message.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "ID of the message.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "d6db1f45c601485ff9038121ac2f47a9",
+            "name": "Routes",
+            "url": "httpsapi.mailgun.netv2\/routes\/",
+            "description": "Fetches the list of routes. Note that routes are defined globally, per account, not per domain as most of other API calls.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "f2ee2a507cff67da345f33025945fe2b",
+            "name": "Add Route",
+            "url": "httpsapi.mailgun.netv2\/routes\/",
+            "description": "Creates a new route.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "action",
+                    "description": "Route action. This action is executed when the expression evaluates to True. Example: forward(alice@example.com) You can pass multiple action parameters.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "description",
+                    "description": "A description",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expression",
+                    "description": "A filter expression like match_recipient(.*@gmail.com)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "priority",
+                    "description": "Integer: smaller number indicates higher priority. Higher priority routes are handled first. Defaults to 0.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "24135306c8304403d6e8fa4527e8d041",
+            "name": "Delete Route",
+            "url": "httpsapi.mailgun.netv2\/routes\/{id}",
+            "description": "Deletes a route based on the id.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "id",
+                    "description": "ID of the route.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "911eca5ba8426fed8df1d61c8d1cbb62",
+            "name": "Route",
+            "url": "httpsapi.mailgun.netv2\/routes\/{id}",
+            "description": "Returns a single route object based on its ID.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "0f6516e7c19a467338781129c009014c",
+            "name": "Updates Route",
+            "url": "httpsapi.mailgun.netv2\/routes\/{id}",
+            "description": "Updates a given route by ID. ",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "action",
+                    "description": "Route action. This action is executed when the expression evaluates to True. Example: forward(alice@example.com) You can pass multiple action parameters.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "description",
+                    "description": "A description",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "expression",
+                    "description": "A filter expression like match_recipient(.*@gmail.com)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "id",
+                    "description": "ID of the route.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "priority",
+                    "description": "Integer: smaller number indicates higher priority. Higher priority routes are handled first. Defaults to 0.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "9767faa8167be786d0049b9b030aaa4e",
+            "name": "Stats",
+            "url": "httpsapi.mailgun.netv2\/stats\/",
+            "description": "Returns a list of event stat items. Each record represents counts for one event per one day.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "event",
+                    "description": "Name of the event to receive the stats for. Note that you can specify this parameter multiple times to fetch stats for several events at the same time (see example below)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Maximum number of records to return. (100 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "skip",
+                    "description": "Number of records to skip. (0 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "start-date",
+                    "description": "The date to receive the stats starting from. Should have ISO8601 format (YYYY-MM-DD).",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "bad5c82300c22a62698103bad711504e",
+            "name": "Delete Tag",
+            "url": "httpsapi.mailgun.netv2\/tags\/{tag}",
+            "description": "Deletes all counters for particular tag and the tag itself.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "c566830a90417535ad2666c068f58f1c",
+            "name": "Unsubscribes",
+            "url": "httpsapi.mailgun.netv2\/unsubscribes\/",
+            "description": "This API allows you to programmatically download the list of recipients who have unsubscribed from your emails. ",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "limit",
+                    "description": "Maximum number of records to return. (100 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "skip",
+                    "description": "Number of records to skip. (0 by default)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "1a9db5357c007bd93da1a1cc072e3975",
+            "name": "Add to unsubscribe list.",
+            "url": "httpsapi.mailgun.netv2\/unsubscribes\/",
+            "description": "Adds address to unsubscribed table.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tag",
+                    "description": "Tag to unsubscribe from, use * to unsubscribe address from domain",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "6b78d1e9a8a9e17ac6fb5dae1426b4de",
+            "name": "Delete Unsubscribe",
+            "url": "httpsapi.mailgun.netv2\/unsubscribes\/{address}",
+            "description": "Removes an address from the unsubscribes table. Address defines which events to delete.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        },
+        {
+            "id": "2893688354d484ae977c8bd728a9ef5b",
+            "name": "Unsubscribe",
+            "url": "httpsapi.mailgun.netv2\/unsubscribes\/{address}",
+            "description": "Retreives a single unsubscribe record. Can be used to check if a given address is present in the list of unsubscribed users.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "address",
+                    "description": "Email address to add to bounce list.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "092af82500a5575e817a5c477753457b",
+            "rawModeData": ""
+        }
+    ]
+}
