@@ -1,5 +1,5 @@
 {
-    "id": "092af82500a5575e817a5c477753457b",
+    "id": "6eb305d0d50c5383c8f389104242a581",
     "name": "Mailgun API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "70b0c43f87d5214934cb1a33bfcbf177",
+            "id": "3589021a11c29b601d06e0a50ed6d1d2",
             "name": "Bounces",
             "url": "httpsapi.mailgun.netv2\/bounces\/",
             "description": "Fetches the list of bounces.",
@@ -44,11 +44,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "b8969fae3772020fd327bf6d7450444b",
+            "id": "79c4869225ce3424e9667b67e9fbd972",
             "name": "Add Bounce",
             "url": "httpsapi.mailgun.netv2\/bounces\/",
             "description": "Adds a permanent bounce to the bounces table. Updates the existing record if already here.",
@@ -89,11 +89,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "3c4b348c6ee150a3fdbbc19674331eb8",
+            "id": "06cd5e44c8d7331dccb6a2ff89bbe059",
             "name": "Delete Bounce",
             "url": "httpsapi.mailgun.netv2\/bounces\/{address}",
             "description": "Clears a bounce event.",
@@ -112,11 +112,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "e9c3b3ffd475081d23375fa912473b72",
+            "id": "c5e64c56438e184384e6f1260a5405e4",
             "name": "Bounce",
             "url": "httpsapi.mailgun.netv2\/bounces\/{address}",
             "description": "Fetches a single bounce event by a given email address. This is useful to check if a given email address has bounced before.",
@@ -143,11 +143,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "226fc3d38d1052a40bc351913e15452d",
+            "id": "ed7423780be74dc3716d0e90c72fd411",
             "name": "Complaints",
             "url": "httpsapi.mailgun.netv2\/complaints\/",
             "description": "Fetches the list of complaints.",
@@ -181,11 +181,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "1f617bfd09c4d1190b63099baeecd81a",
+            "id": "2f3d5cecb73d6d66ad9dd3277f2d0c0b",
             "name": "Add Complaint",
             "url": "httpsapi.mailgun.netv2\/complaints\/",
             "description": "Adds an address to the complaints table.",
@@ -212,11 +212,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "8b62d8bf6d7ef497fc350e0c4af5e5d9",
+            "id": "1f1ab1e56b462f9caf6540d94a6df191",
             "name": "Delete Complaint",
             "url": "httpsapi.mailgun.netv2\/complaints\/{address}",
             "description": "Removes a given spam complaint.",
@@ -243,11 +243,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "18d151519121ee0535c509f2a5c3b668",
+            "id": "303ac3dad2e1c4dc753a275d3919aeb7",
             "name": "Complaint",
             "url": "httpsapi.mailgun.netv2\/complaints\/{address}",
             "description": "Fetches a single spam complaint by a given email address. This is useful to check if a particular user has complained.",
@@ -274,11 +274,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "c04db0fad6454f3d2d41128be20a2ca9",
+            "id": "27057a014b7f4c2aa971f7e27b92ebe5",
             "name": "Create List",
             "url": "httpsapi.mailgun.netv2\/lists",
             "description": "Creates a new mailing list.",
@@ -326,11 +326,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "a330323bca73fa5f0111f2973af97fed",
+            "id": "93c5cc8a5defe777660c10da51832637",
             "name": "Lists",
             "url": "httpsapi.mailgun.netv2\/lists\/",
             "description": "Returns a list of mailing lists under your account.",
@@ -392,11 +392,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "98f0c45cb6d506852a714a5a46f1446e",
+            "id": "7c0487cd961aab8ca054fc7b3be158ae",
             "name": "Delete List",
             "url": "httpsapi.mailgun.netv2\/lists\/{address}",
             "description": "Deletes a mailing list.",
@@ -423,11 +423,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "d754eece6b32435dad799dc72b17e141",
+            "id": "2beb207c31d17ef323d505cd9e2032f3",
             "name": "List",
             "url": "httpsapi.mailgun.netv2\/lists\/{address}",
             "description": "Returns a single mailing list by a given address.",
@@ -454,11 +454,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "7fe617eaf102f130db18f0b8c4a3add2",
+            "id": "3ca8597cf4d90c7bd612f786c2d9e9af",
             "name": "Update List",
             "url": "httpsapi.mailgun.netv2\/lists\/{address}",
             "description": "Update mailing list properties, such as address, description or name",
@@ -477,11 +477,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "0c8a4f5409cb4c29eb9764a2ea148381",
+            "id": "bbb974d63c260e0ba2a28d6e651ab1e9",
             "name": "Add To List",
             "url": "httpsapi.mailgun.netv2\/lists\/{address}\/members",
             "description": "Adds a member to the mailing list.",
@@ -536,11 +536,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "3b815520015044bc791b0292e4b60ae7",
+            "id": "99f9dbaabcbd4c3439adc02769931918",
             "name": "List Members",
             "url": "httpsapi.mailgun.netv2\/lists\/{address}\/members\/",
             "description": "Fetches the list of mailing list members.",
@@ -581,11 +581,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "cc566aded495db4115bae5f6e892b3e0",
+            "id": "fbf4ddaa72d7aa2c5ecd43791650c41a",
             "name": "List Member",
             "url": "httpsapi.mailgun.netv2\/lists\/{address}\/members\/{member_address}",
             "description": "Retrieves a mailing list member.",
@@ -619,11 +619,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "f9efb9af5a7c99544162e4518b124332",
+            "id": "2e54be80523ec6b2d3b735906eacb953",
             "name": "Posts Mime Message",
             "url": "httpsapi.mailgun.netv2\/messages.mime",
             "description": "Posts a message in MIME format. Note: you will need to build a MIME string yourself. Use a MIME library for your programming language to do this. Pass the resulting MIME string as message parameter.",
@@ -727,11 +727,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "bd627570a75c9d61de00f139ea29fec6",
+            "id": "05007a7a508894962fecead5b83a2386",
             "name": "Send Message",
             "url": "httpsapi.mailgun.netv2\/messages\/",
             "description": "Sends a message by assembling it from the components. Note that you can specify most parameters multiple times, HTTP supports this out of the box. This makes sense for parameters like cc, to or attachment.",
@@ -884,11 +884,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "6b16e5b0af00e5249f4234f49f7d27f1",
+            "id": "b743743d07927c99c530265b93242ee6",
             "name": "Message",
             "url": "httpsapi.mailgun.netv2\/messages\/{id}",
             "description": "Gets a message.",
@@ -915,11 +915,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "d6db1f45c601485ff9038121ac2f47a9",
+            "id": "fc8d7264c4eb0aa55e82d1748d02cb80",
             "name": "Routes",
             "url": "httpsapi.mailgun.netv2\/routes\/",
             "description": "Fetches the list of routes. Note that routes are defined globally, per account, not per domain as most of other API calls.",
@@ -938,11 +938,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "f2ee2a507cff67da345f33025945fe2b",
+            "id": "2250a81727f74096001541f8dd3bbcf5",
             "name": "Add Route",
             "url": "httpsapi.mailgun.netv2\/routes\/",
             "description": "Creates a new route.",
@@ -990,11 +990,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "24135306c8304403d6e8fa4527e8d041",
+            "id": "ee75ff2b35e5b43774f262e8be761e15",
             "name": "Delete Route",
             "url": "httpsapi.mailgun.netv2\/routes\/{id}",
             "description": "Deletes a route based on the id.",
@@ -1021,11 +1021,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "911eca5ba8426fed8df1d61c8d1cbb62",
+            "id": "8a1bccd151515b6959845e8dd23d470b",
             "name": "Route",
             "url": "httpsapi.mailgun.netv2\/routes\/{id}",
             "description": "Returns a single route object based on its ID.",
@@ -1044,11 +1044,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "0f6516e7c19a467338781129c009014c",
+            "id": "352fab9c195a170257fd604e9de5df5c",
             "name": "Updates Route",
             "url": "httpsapi.mailgun.netv2\/routes\/{id}",
             "description": "Updates a given route by ID. ",
@@ -1103,11 +1103,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "9767faa8167be786d0049b9b030aaa4e",
+            "id": "9d7931fd3558801c8ab99a6a47fe6fb3",
             "name": "Stats",
             "url": "httpsapi.mailgun.netv2\/stats\/",
             "description": "Returns a list of event stat items. Each record represents counts for one event per one day.",
@@ -1155,11 +1155,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "bad5c82300c22a62698103bad711504e",
+            "id": "194ad2cd9e20eae20fe55045cd2bf321",
             "name": "Delete Tag",
             "url": "httpsapi.mailgun.netv2\/tags\/{tag}",
             "description": "Deletes all counters for particular tag and the tag itself.",
@@ -1178,11 +1178,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "c566830a90417535ad2666c068f58f1c",
+            "id": "d9a1793f61003d56ec20b7fcec373260",
             "name": "Unsubscribes",
             "url": "httpsapi.mailgun.netv2\/unsubscribes\/",
             "description": "This API allows you to programmatically download the list of recipients who have unsubscribed from your emails. ",
@@ -1216,11 +1216,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "1a9db5357c007bd93da1a1cc072e3975",
+            "id": "1bd84bbde221d8743a677480303205de",
             "name": "Add to unsubscribe list.",
             "url": "httpsapi.mailgun.netv2\/unsubscribes\/",
             "description": "Adds address to unsubscribed table.",
@@ -1254,11 +1254,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "6b78d1e9a8a9e17ac6fb5dae1426b4de",
+            "id": "f3fefdc376db2bbcd6efa2fc81185b37",
             "name": "Delete Unsubscribe",
             "url": "httpsapi.mailgun.netv2\/unsubscribes\/{address}",
             "description": "Removes an address from the unsubscribes table. Address defines which events to delete.",
@@ -1285,11 +1285,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         },
         {
-            "id": "2893688354d484ae977c8bd728a9ef5b",
+            "id": "75ea18b0aceba7fd5a8b14e2ec5655d5",
             "name": "Unsubscribe",
             "url": "httpsapi.mailgun.netv2\/unsubscribes\/{address}",
             "description": "Retreives a single unsubscribe record. Can be used to check if a given address is present in the list of unsubscribed users.",
@@ -1316,7 +1316,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "092af82500a5575e817a5c477753457b",
+            "collectionId": "6eb305d0d50c5383c8f389104242a581",
             "rawModeData": ""
         }
     ]
