@@ -1,0 +1,76 @@
+aid: mailgun
+name: Mailgun
+description: >-
+  Mailgun (by Sinch) is a transactional email API service for developers
+  to send, receive, validate, and track emails at scale. The platform
+  provides SMTP and HTTP APIs for sending email, inbound message routing,
+  deliverability analytics, suppression management, and email validation
+  with regional endpoints for US and EU data residency.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Email
+  - Transactional Email
+  - SMTP
+  - Email Validation
+  - Email Delivery
+  - Messaging
+url: https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: mailgun:send-api
+    name: Mailgun Send API
+    description: >-
+      REST API for sending transactional and marketing email, managing
+      domains, mailing lists, templates, suppressions, webhooks, events,
+      and inbound routes. Authentication uses HTTP Basic Auth with an
+      API key.
+    humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
+    baseURL: https://api.mailgun.net
+    tags:
+      - Email
+      - Send
+      - Domains
+      - Webhooks
+      - Routes
+      - Events
+    properties:
+      - type: Documentation
+        url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+      - type: API Overview
+        url: https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview
+      - type: Authentication
+        url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
+      - type: OpenAPI
+        url: https://documentation.mailgun.com/_spec/docs/mailgun/api-reference/send/mailgun.yaml
+  - aid: mailgun:validate-api
+    name: Mailgun Email Validation API
+    description: >-
+      REST API for verifying email addresses in real time, bulk list
+      validation, and deliverability scoring to reduce bounces and
+      improve sender reputation.
+    humanURL: https://documentation.mailgun.com/docs/validate/api-overview
+    baseURL: https://api.mailgun.net
+    tags:
+      - Email Validation
+      - Verification
+      - Deliverability
+    properties:
+      - type: Documentation
+        url: https://documentation.mailgun.com/docs/validate/api-overview
+common:
+  - type: Website
+    url: https://www.mailgun.com
+  - type: Documentation
+    url: https://documentation.mailgun.com/
+  - type: Sign Up
+    url: https://signup.mailgun.com/new/signup
+  - type: Pricing
+    url: https://www.mailgun.com/pricing/
+  - type: Developer Portal
+    url: https://documentation.mailgun.com/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
