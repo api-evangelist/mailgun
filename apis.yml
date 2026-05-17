@@ -65,7 +65,7 @@ common:
     url: https://www.mailgun.com
   - type: Documentation
     url: https://documentation.mailgun.com/
-  - type: Sign Up
+  - type: SignUp
     url: https://signup.mailgun.com/new/signup
   - type: Pricing
     url: https://www.mailgun.com/pricing/
