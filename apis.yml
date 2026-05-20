@@ -61,6 +61,10 @@ apis:
       - type: Documentation
         url: https://documentation.mailgun.com/docs/validate/api-overview
 common:
+  - type: GitHubOrganization
+    url: https://github.com/mailgun
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/mailgun
   - type: Website
     url: https://www.mailgun.com
   - type: Documentation
