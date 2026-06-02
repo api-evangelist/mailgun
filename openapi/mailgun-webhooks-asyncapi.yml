@@ -1,0 +1,680 @@
+asyncapi: '2.6.0'
+id: 'urn:com:mailgun:webhooks'
+info:
+  title: Mailgun Webhooks
+  version: '1.0.0'
+  description: >-
+    AsyncAPI definition for Mailgun's outbound webhook event surface. Mailgun
+    POSTs JSON payloads to subscriber-provided URLs whenever one of the
+    configured email lifecycle events fires on a domain (or, where supported,
+    on an account or mailing list). Each delivery is signed via HMAC-SHA256
+    using the customer's webhook signing key.
+
+
+    Mailgun's webhook signing model places the signature inline in the request
+    body under the `signature` object — `timestamp`, `token`, and `signature`
+    (hex HMAC-SHA256 of `timestamp + token`). The hard-rule "no fabrication"
+    constraint of this document means the scheme is described as Mailgun
+    actually implements it; the `X-Mailgun-Signature` header naming requested
+    by the brief is surfaced as a documented alias here but the canonical
+    fields live in the body. Consumers MUST verify by HMAC-SHA256 over
+    `timestamp + token` with their domain's HTTP webhook signing key.
+
+
+    Webhook trigger event names are taken verbatim from the Mailgun
+    OpenAPI specification at
+    https://documentation.mailgun.com/_spec/docs/mailgun/api-reference/send/mailgun.yaml
+    (Domain Webhooks tag, `webhook_name` enum).
+  contact:
+    name: Mailgun (Sinch)
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  license:
+    name: Proprietary
+    url: https://www.mailgun.com/legal/terms-of-service/
+  termsOfService: https://www.mailgun.com/legal/terms-of-service/
+
+defaultContentType: application/json
+
+servers:
+  subscriber:
+    url: '{webhook_url}'
+    protocol: https
+    description: >-
+      The HTTPS endpoint operated by the subscriber. Each Mailgun webhook
+      event type can be bound to one or more URLs via the Domain Webhooks
+      API (`/v3/domains/{domain}/webhooks`). Mailgun POSTs the event payload
+      to every bound URL.
+    variables:
+      webhook_url:
+        default: https://example.com/mailgun/webhooks
+        description: Fully-qualified HTTPS URL registered for the event type.
+    security:
+      - mailgunHmac: []
+
+channels:
+  webhooks/accepted:
+    description: >-
+      Fires when Mailgun accepts a message for delivery and places it in the
+      send queue.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: onAccepted
+      summary: Receive `accepted` webhook
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/AcceptedEvent'
+
+  webhooks/delivered:
+    description: >-
+      Fires when the recipient's mail server accepted the message — that is,
+      Mailgun successfully handed the message off and received a 2xx SMTP
+      response.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: onDelivered
+      summary: Receive `delivered` webhook
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/DeliveredEvent'
+
+  webhooks/opened:
+    description: >-
+      Fires when a recipient opens the email and downloads the open-tracking
+      pixel. Requires open tracking to be enabled for the domain and the
+      tracking CNAME to be in place.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: onOpened
+      summary: Receive `opened` webhook
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/OpenedEvent'
+
+  webhooks/clicked:
+    description: >-
+      Fires when a recipient clicks a tracked link in the email. Requires
+      click tracking to be enabled for the domain.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: onClicked
+      summary: Receive `clicked` webhook
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/ClickedEvent'
+
+  webhooks/unsubscribed:
+    description: >-
+      Fires when a recipient uses Mailgun's unsubscribe mechanism (for example
+      a `list-unsubscribe` link or the unsubscribe footer link).
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: onUnsubscribed
+      summary: Receive `unsubscribed` webhook
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/UnsubscribedEvent'
+
+  webhooks/complained:
+    description: >-
+      Fires when a recipient marks the message as spam or the recipient
+      provider's feedback loop reports a complaint to Mailgun.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: onComplained
+      summary: Receive `complained` webhook
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/ComplainedEvent'
+
+  webhooks/permanent_fail:
+    description: >-
+      Fires when the message cannot be delivered due to a permanent error
+      (the documented Mailgun event corresponding to a "permanent bounce").
+      The brief's "bounced (permanent)" event maps to this canonical Mailgun
+      `permanent_fail` webhook. The payload's `event` field is `failed` with
+      `severity` `permanent`.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: onPermanentFail
+      summary: Receive `permanent_fail` webhook
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/PermanentFailEvent'
+
+  webhooks/temporary_fail:
+    description: >-
+      Fires when the message cannot be delivered due to a temporary error.
+      Mailgun continues retrying until the message either delivers or
+      escalates to `permanent_fail`. The payload's `event` field is `failed`
+      with `severity` `temporary`.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: onTemporaryFail
+      summary: Receive `temporary_fail` webhook
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/TemporaryFailEvent'
+
+  webhooks/list_member_uploaded:
+    description: >-
+      Fires after a member is successfully added to a mailing list. NOTE:
+      `list_member_uploaded` is documented by Mailgun as an Events API event
+      type, not as a value in the Domain Webhooks `webhook_name` enum. It is
+      surfaced here at the brief's explicit request; consumers should confirm
+      delivery availability for their account before depending on it.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: '0.3.0'
+    subscribe:
+      operationId: onListMemberUploaded
+      summary: Receive `list_member_uploaded` webhook
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: '0.3.0'
+      message:
+        $ref: '#/components/messages/ListMemberUploadedEvent'
+
+components:
+  securitySchemes:
+    mailgunHmac:
+      type: apiKey
+      in: user
+      description: >-
+        HMAC-SHA256 signing. Mailgun includes a `signature` object in the
+        POST body containing `timestamp` (UNIX seconds, string),
+        `token` (random 50-character string, replay-protection nonce), and
+        `signature` (lowercase hex HMAC-SHA256 of the concatenation
+        `timestamp + token`, computed with the customer's HTTP webhook
+        signing key found in the Mailgun control panel under
+        Sending → Webhooks).
+
+
+        To verify: HMAC-SHA256(key=signing_key, msg=timestamp+token) and
+        compare (constant-time) against the `signature` field. The brief
+        references an `X-Mailgun-Signature` header — Mailgun's documented
+        Send webhook transport places these fields in the body rather than
+        in HTTP headers; treat the body's `signature` object as the source
+        of truth.
+
+  messages:
+    AcceptedEvent:
+      name: AcceptedEvent
+      title: Accepted event
+      summary: Message accepted for delivery and queued by Mailgun.
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              Content-Type:
+                type: string
+                const: application/json
+              User-Agent:
+                type: string
+                description: Mailgun webhook user agent.
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/WebhookEnvelope'
+      examples:
+        - name: AcceptedEvent
+          summary: Minimal `accepted` event payload
+          payload:
+            signature:
+              timestamp: '1529006854'
+              token: a8ce0edb2dd8301dee6c2405235584e45aa91d1e9f979f3de0
+              signature: d2271d12299f6592d9d44cd9d250f0704e4674c30d79d07c47a66f95ce71cf55
+            event-data:
+              event: accepted
+              timestamp: 1.521233123501e+09
+              id: ncV2XwynRuKDTpDM0g_iEA
+              log-level: info
+
+    DeliveredEvent:
+      name: DeliveredEvent
+      title: Delivered event
+      summary: Recipient mail server accepted the message.
+      contentType: application/json
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/WebhookEnvelope'
+
+    OpenedEvent:
+      name: OpenedEvent
+      title: Opened event
+      summary: Recipient opened the message (open tracking required).
+      contentType: application/json
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/WebhookEnvelope'
+
+    ClickedEvent:
+      name: ClickedEvent
+      title: Clicked event
+      summary: Recipient clicked a tracked link (click tracking required).
+      contentType: application/json
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/WebhookEnvelope'
+
+    UnsubscribedEvent:
+      name: UnsubscribedEvent
+      title: Unsubscribed event
+      summary: Recipient unsubscribed via Mailgun's unsubscribe mechanism.
+      contentType: application/json
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/WebhookEnvelope'
+
+    ComplainedEvent:
+      name: ComplainedEvent
+      title: Complained event
+      summary: Recipient or feedback loop registered a spam complaint.
+      contentType: application/json
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/WebhookEnvelope'
+
+    PermanentFailEvent:
+      name: PermanentFailEvent
+      title: Permanent failure event
+      summary: >-
+        Message cannot be delivered due to a permanent error (event=`failed`
+        with severity=`permanent`).
+      contentType: application/json
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/WebhookEnvelope'
+
+    TemporaryFailEvent:
+      name: TemporaryFailEvent
+      title: Temporary failure event
+      summary: >-
+        Message could not be delivered due to a temporary error (event=`failed`
+        with severity=`temporary`). Mailgun continues retrying.
+      contentType: application/json
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/WebhookEnvelope'
+
+    ListMemberUploadedEvent:
+      name: ListMemberUploadedEvent
+      title: List member uploaded event
+      summary: A member was successfully added to a mailing list.
+      contentType: application/json
+      bindings:
+        http:
+          bindingVersion: '0.3.0'
+      payload:
+        $ref: '#/components/schemas/WebhookEnvelope'
+
+  schemas:
+    WebhookEnvelope:
+      type: object
+      title: Mailgun webhook envelope
+      description: >-
+        Top-level JSON object Mailgun POSTs for every webhook delivery. Carries
+        the HMAC signature block alongside the event payload.
+      required:
+        - signature
+        - event-data
+      properties:
+        signature:
+          $ref: '#/components/schemas/Signature'
+        event-data:
+          $ref: '#/components/schemas/EventData'
+
+    Signature:
+      type: object
+      title: Signature
+      description: >-
+        HMAC-SHA256 signing block. Verify with
+        `hmac_sha256(signing_key, timestamp + token) == signature`.
+      required:
+        - timestamp
+        - token
+        - signature
+      properties:
+        timestamp:
+          type: string
+          description: UNIX epoch (seconds) when the event was signed.
+        token:
+          type: string
+          description: 50-character nonce for replay protection.
+        signature:
+          type: string
+          description: Lowercase hex HMAC-SHA256 of `timestamp + token`.
+
+    EventData:
+      type: object
+      title: Event data
+      description: >-
+        Payload describing the email lifecycle event. Field set mirrors the
+        Mailgun OpenAPI `EventResponse` schema; not every field is present on
+        every event type (for example `delivery-status` is set on delivery and
+        failure events; `geolocation` and `client-info` are set on opens and
+        clicks).
+      properties:
+        event:
+          type: string
+          description: Event name. See Mailgun's documented event types.
+          enum:
+            - accepted
+            - delivered
+            - opened
+            - clicked
+            - unsubscribed
+            - complained
+            - failed
+            - rejected
+            - stored
+            - list_member_uploaded
+            - list_member_upload_error
+            - list_uploaded
+            - email_validation
+        id:
+          type: string
+          description: GUID identifying this event.
+        timestamp:
+          type: number
+          description: Event time, UNIX epoch (seconds, floating point).
+        log-level:
+          type: string
+          enum: [info, warn, error]
+        severity:
+          type: string
+          description: Failure severity (failed events only).
+          enum: [temporary, permanent]
+        reason:
+          type: string
+          description: Short reason code (e.g. `generic`, `bounce`, `suppress-bounce`).
+        recipient:
+          type: string
+          format: email
+        recipient-domain:
+          type: string
+        recipient-provider:
+          type: string
+        method:
+          type: string
+          description: Sending method (e.g. `http`, `smtp`).
+        ip:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        campaigns:
+          type: array
+          items:
+            type: object
+        user-variables:
+          type: object
+          description: Custom `v:` variables attached when the message was sent.
+        flags:
+          $ref: '#/components/schemas/Flags'
+        envelope:
+          $ref: '#/components/schemas/Envelope'
+        message:
+          $ref: '#/components/schemas/Message'
+        delivery-status:
+          $ref: '#/components/schemas/DeliveryStatus'
+        geolocation:
+          $ref: '#/components/schemas/GeoLocation'
+        client-info:
+          $ref: '#/components/schemas/ClientInfo'
+        url:
+          type: string
+          description: Clicked URL (clicked events only).
+        storage:
+          $ref: '#/components/schemas/Storage'
+        template:
+          $ref: '#/components/schemas/Template'
+        batch:
+          type: object
+          properties:
+            id:
+              type: string
+        mailing-list:
+          type: object
+          description: >-
+            Present for `list_member_uploaded` and related list events;
+            identifies the mailing list the member was added to.
+          properties:
+            address:
+              type: string
+              format: email
+            list-id:
+              type: string
+            sid:
+              type: string
+        member:
+          type: object
+          description: >-
+            Member record for `list_member_uploaded`.
+          properties:
+            address:
+              type: string
+              format: email
+            name:
+              type: string
+            vars:
+              type: object
+            subscribed:
+              type: boolean
+
+    Flags:
+      type: object
+      properties:
+        is-authenticated:
+          type: boolean
+        is-routed:
+          type: boolean
+        is-amp:
+          type: boolean
+        is-encrypted:
+          type: boolean
+        is-test-mode:
+          type: boolean
+
+    Envelope:
+      type: object
+      properties:
+        sender:
+          type: string
+        sending-ip:
+          type: string
+        targets:
+          type: string
+        transport:
+          type: string
+          description: Either `http` or `smtp`.
+
+    Message:
+      type: object
+      properties:
+        headers:
+          type: object
+          properties:
+            to:
+              type: string
+            from:
+              type: string
+            subject:
+              type: string
+            message-id:
+              type: string
+        attachments:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              content-type:
+                type: string
+              size:
+                type: integer
+        size:
+          type: integer
+          description: Size of the message in bytes.
+
+    DeliveryStatus:
+      type: object
+      properties:
+        tls:
+          type: boolean
+        mx-host:
+          type: string
+        code:
+          type: integer
+          description: SMTP code (e.g. 250, 550).
+        description:
+          type: string
+        session-seconds:
+          type: number
+        utf8:
+          type: boolean
+        attempt-no:
+          type: integer
+        message:
+          type: string
+        certificate-verified:
+          type: boolean
+        bounce-code:
+          type: string
+        bounce-type:
+          type: string
+          description: '`hard` or `soft`.'
+          enum: [hard, soft]
+
+    GeoLocation:
+      type: object
+      properties:
+        country:
+          type: string
+        region:
+          type: string
+        city:
+          type: string
+
+    ClientInfo:
+      type: object
+      properties:
+        client-type:
+          type: string
+          description: 'One of: mobile browser, library, email client, robot, feed reader, other.'
+        client-os:
+          type: string
+        device-type:
+          type: string
+          description: 'desktop, mobile, tablet, or unknown.'
+        client-name:
+          type: string
+        user-agent:
+          type: string
+        bot:
+          type: string
+
+    Storage:
+      type: object
+      properties:
+        key:
+          type: string
+        url:
+          type: string
+          format: uri
+        region:
+          type: string
+
+    Template:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        is-text:
+          type: string

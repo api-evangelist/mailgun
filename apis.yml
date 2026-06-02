@@ -17,7 +17,7 @@ tags:
   - Messaging
 url: https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/apis.yml
 created: '2026-05-11'
-modified: '2026-05-11'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
   - aid: mailgun:send-api
@@ -45,6 +45,8 @@ apis:
         url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
       - type: OpenAPI
         url: https://documentation.mailgun.com/_spec/docs/mailgun/api-reference/send/mailgun.yaml
+      - type: AsyncAPI
+        url: https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
   - aid: mailgun:validate-api
     name: Mailgun Email Validation API
     description: >-
