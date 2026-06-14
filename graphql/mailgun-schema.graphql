@@ -1,0 +1,676 @@
+# Mailgun Conceptual GraphQL Schema
+# Source: Derived from Mailgun REST API (https://documentation.mailgun.com/api)
+# Mailgun is REST-only; this schema is a conceptual representation of its data model.
+
+scalar DateTime
+scalar JSON
+
+# ─── Core Email Domain ────────────────────────────────────────────────────────
+
+type Domain {
+  name: String!
+  state: DomainState!
+  type: DomainType!
+  isDisabled: Boolean!
+  requireTLS: Boolean!
+  noVerify: Boolean!
+  smtpLogin: String
+  smtpPassword: String
+  spamAction: SpamAction!
+  wildcard: Boolean!
+  webPrefix: String
+  createdAt: DateTime!
+  dnsRecords: [DnsRecord!]!
+  receivingDnsRecords: [DnsRecord!]!
+  credentials: [Credential!]!
+  webhooks: [Webhook!]!
+  tags: [Tag!]!
+  mailingLists: [MailingList!]!
+  stats: DomainStats
+}
+
+enum DomainState {
+  ACTIVE
+  UNVERIFIED
+  DISABLED
+}
+
+enum DomainType {
+  SANDBOX
+  CUSTOM
+}
+
+enum SpamAction {
+  DISABLED
+  BLOCK
+  TAG
+}
+
+type DnsRecord {
+  recordType: String!
+  valid: String!
+  name: String!
+  value: String!
+  priority: Int
+}
+
+type DomainStats {
+  totalSent: Int!
+  totalDelivered: Int!
+  totalFailed: Int!
+  totalOpened: Int!
+  totalClicked: Int!
+  totalBounced: Int!
+  totalComplaints: Int!
+  totalUnsubscribed: Int!
+}
+
+# ─── Credential ───────────────────────────────────────────────────────────────
+
+type Credential {
+  login: String!
+  createdAt: DateTime!
+}
+
+# ─── Message / Sending ────────────────────────────────────────────────────────
+
+type Message {
+  id: String!
+  messageId: String
+  domain: Domain!
+  from: String!
+  to: [String!]!
+  cc: [String!]
+  bcc: [String!]
+  subject: String!
+  bodyHtml: String
+  bodyText: String
+  tags: [String!]
+  headers: JSON
+  attachments: [Attachment!]
+  tracking: TrackingOptions
+  deliveryTime: DateTime
+  recipient: String
+  timestamp: DateTime!
+}
+
+type Attachment {
+  filename: String!
+  contentType: String!
+  size: Int!
+  url: String
+}
+
+type TrackingOptions {
+  opens: Boolean!
+  clicks: Boolean!
+  unsubscribe: Boolean!
+}
+
+input SendMessageInput {
+  domain: String!
+  from: String!
+  to: [String!]!
+  cc: [String!]
+  bcc: [String!]
+  subject: String!
+  text: String
+  html: String
+  template: String
+  templateVariables: JSON
+  tags: [String!]
+  deliveryTime: DateTime
+  trackingOpens: Boolean
+  trackingClicks: Boolean
+  trackingUnsubscribe: Boolean
+  headers: JSON
+  recipientVariables: JSON
+  requireTLS: Boolean
+  skipVerification: Boolean
+}
+
+# ─── Recipient / Sending Recipient ───────────────────────────────────────────
+
+type Recipient {
+  address: String!
+  name: String
+  variables: JSON
+}
+
+type Sending {
+  messageId: String!
+  message: String!
+  id: String!
+}
+
+# ─── Template ─────────────────────────────────────────────────────────────────
+
+type Template {
+  name: String!
+  description: String
+  createdAt: DateTime!
+  version: TemplateVersion
+}
+
+type TemplateVersion {
+  tag: String!
+  template: String!
+  engine: TemplateEngine!
+  createdAt: DateTime!
+  comment: String
+  active: Boolean!
+}
+
+enum TemplateEngine {
+  HANDLEBARS
+  MUSTACHE
+}
+
+input CreateTemplateInput {
+  name: String!
+  description: String
+  template: String!
+  engine: TemplateEngine
+  tag: String
+  comment: String
+}
+
+# ─── Event / Log ──────────────────────────────────────────────────────────────
+
+interface Event {
+  id: String!
+  timestamp: DateTime!
+  event: EventType!
+  recipient: String!
+  domain: String!
+  message: EventMessage
+  flags: EventFlags
+  tags: [String!]
+  userVariables: JSON
+  geolocation: Geolocation
+  clientInfo: ClientInfo
+  ip: String
+  campaigns: [String!]
+}
+
+type EventMessage {
+  headers: MessageHeaders!
+  attachments: [Attachment!]
+  size: Int
+}
+
+type MessageHeaders {
+  to: String!
+  messageId: String!
+  from: String!
+  subject: String!
+}
+
+type EventFlags {
+  isBig: Boolean
+  isAuthenticated: Boolean
+  isSystemTest: Boolean
+}
+
+type Geolocation {
+  country: String
+  region: String
+  city: String
+}
+
+type ClientInfo {
+  clientName: String
+  clientOs: String
+  clientType: String
+  deviceType: String
+  userAgent: String
+}
+
+enum EventType {
+  ACCEPTED
+  REJECTED
+  DELIVERED
+  FAILED
+  OPENED
+  CLICKED
+  UNSUBSCRIBED
+  COMPLAINED
+  STORED
+}
+
+type DeliverEvent implements Event {
+  id: String!
+  timestamp: DateTime!
+  event: EventType!
+  recipient: String!
+  domain: String!
+  message: EventMessage
+  flags: EventFlags
+  tags: [String!]
+  userVariables: JSON
+  geolocation: Geolocation
+  clientInfo: ClientInfo
+  ip: String
+  campaigns: [String!]
+  deliveryStatus: DeliveryStatus
+}
+
+type DeliveryStatus {
+  tls: Boolean
+  mxHost: String
+  code: Int
+  description: String
+  sessionSeconds: Float
+  certificate: Boolean
+  utf8Encoding: Boolean
+  attemptNo: Int
+}
+
+type OpenEvent implements Event {
+  id: String!
+  timestamp: DateTime!
+  event: EventType!
+  recipient: String!
+  domain: String!
+  message: EventMessage
+  flags: EventFlags
+  tags: [String!]
+  userVariables: JSON
+  geolocation: Geolocation
+  clientInfo: ClientInfo
+  ip: String
+  campaigns: [String!]
+}
+
+type ClickEvent implements Event {
+  id: String!
+  timestamp: DateTime!
+  event: EventType!
+  recipient: String!
+  domain: String!
+  message: EventMessage
+  flags: EventFlags
+  tags: [String!]
+  userVariables: JSON
+  geolocation: Geolocation
+  clientInfo: ClientInfo
+  ip: String
+  campaigns: [String!]
+  url: String!
+}
+
+type BounceEvent implements Event {
+  id: String!
+  timestamp: DateTime!
+  event: EventType!
+  recipient: String!
+  domain: String!
+  message: EventMessage
+  flags: EventFlags
+  tags: [String!]
+  userVariables: JSON
+  geolocation: Geolocation
+  clientInfo: ClientInfo
+  ip: String
+  campaigns: [String!]
+  severity: BounceSeverity!
+  reason: String
+  deliveryStatus: DeliveryStatus
+}
+
+enum BounceSeverity {
+  PERMANENT
+  TEMPORARY
+}
+
+type ComplaintEvent implements Event {
+  id: String!
+  timestamp: DateTime!
+  event: EventType!
+  recipient: String!
+  domain: String!
+  message: EventMessage
+  flags: EventFlags
+  tags: [String!]
+  userVariables: JSON
+  geolocation: Geolocation
+  clientInfo: ClientInfo
+  ip: String
+  campaigns: [String!]
+}
+
+type EventConnection {
+  items: [Event!]!
+  nextPage: String
+}
+
+# ─── Log ──────────────────────────────────────────────────────────────────────
+
+type Log {
+  timestamp: DateTime!
+  type: String!
+  severity: String
+  message: String!
+  domain: String!
+  recipient: String
+}
+
+# ─── Mailing List & Member ────────────────────────────────────────────────────
+
+type MailingList {
+  address: String!
+  name: String
+  description: String
+  accessLevel: MailingListAccess!
+  replyPreference: ReplyPreference!
+  createdAt: DateTime!
+  membersCount: Int!
+  members: [Member!]!
+}
+
+enum MailingListAccess {
+  READONLY
+  MEMBERS
+  EVERYONE
+}
+
+enum ReplyPreference {
+  LIST
+  SENDER
+}
+
+type Member {
+  address: String!
+  name: String
+  subscribed: Boolean!
+  vars: JSON
+}
+
+input CreateMailingListInput {
+  address: String!
+  name: String
+  description: String
+  accessLevel: MailingListAccess
+  replyPreference: ReplyPreference
+}
+
+input CreateMemberInput {
+  address: String!
+  name: String
+  subscribed: Boolean
+  vars: JSON
+  upsert: Boolean
+}
+
+# ─── Suppressions ─────────────────────────────────────────────────────────────
+
+type BounceRecord {
+  address: String!
+  code: String!
+  error: String!
+  createdAt: DateTime!
+}
+
+type Complaint {
+  address: String!
+  createdAt: DateTime!
+}
+
+type Unsubscription {
+  address: String!
+  tag: String
+  createdAt: DateTime!
+}
+
+type Inbox {
+  address: String!
+  domain: String!
+  size: Int!
+}
+
+# ─── Tag / Tracking ───────────────────────────────────────────────────────────
+
+type Tag {
+  name: String!
+  description: String
+  firstSeen: DateTime
+  lastSeen: DateTime
+}
+
+type Tracking {
+  opens: TrackingStat
+  clicks: TrackingStat
+  unsubscribes: TrackingStat
+  complaints: TrackingStat
+}
+
+type TrackingStat {
+  total: Int!
+  unique: Int!
+}
+
+# ─── Webhook ──────────────────────────────────────────────────────────────────
+
+type Webhook {
+  url: String!
+  eventTypes: [EventType!]!
+}
+
+input CreateWebhookInput {
+  domain: String!
+  eventType: EventType!
+  url: String!
+}
+
+# ─── Route ────────────────────────────────────────────────────────────────────
+
+type Route {
+  id: String!
+  description: String
+  expression: String!
+  priority: Int!
+  actions: [String!]!
+  createdAt: DateTime!
+}
+
+input CreateRouteInput {
+  priority: Int!
+  description: String
+  expression: String!
+  actions: [String!]!
+}
+
+# ─── Storage ──────────────────────────────────────────────────────────────────
+
+type Storage {
+  key: String!
+  url: String!
+  contentType: String!
+  size: Int!
+  envelope: StorageEnvelope
+  headers: JSON
+  bodyMime: String
+}
+
+type StorageEnvelope {
+  targets: String!
+  sender: String!
+  from: String!
+}
+
+# ─── Validation ───────────────────────────────────────────────────────────────
+
+type Validation {
+  address: String!
+  isDisposable: Boolean!
+  isRoleAddress: Boolean!
+  mailboxVerification: MailboxVerification
+  domainValid: Boolean!
+  didYouMean: String
+  parts: AddressParts!
+  reason: [String!]
+  result: ValidationResult!
+  risk: ValidationRisk!
+}
+
+enum ValidationResult {
+  DELIVERABLE
+  UNDELIVERABLE
+  DO_NOT_SEND
+  CATCH_ALL
+  UNKNOWN
+}
+
+enum ValidationRisk {
+  HIGH
+  LOW
+  MEDIUM
+  UNKNOWN
+}
+
+type MailboxVerification {
+  result: String!
+  reason: String
+}
+
+type AddressParts {
+  displayName: String
+  userName: String!
+  domain: String!
+}
+
+# ─── Batch ────────────────────────────────────────────────────────────────────
+
+type Batch {
+  id: String!
+  status: BatchStatus!
+  validCount: Int!
+  totalCount: Int!
+  createdAt: DateTime!
+  finishedAt: DateTime
+  downloadUrl: String
+}
+
+enum BatchStatus {
+  CREATED
+  PROCESSING
+  DONE
+  FAILED
+}
+
+# ─── Queries ──────────────────────────────────────────────────────────────────
+
+type Query {
+  # Domains
+  domains: [Domain!]!
+  domain(name: String!): Domain
+  domainStats(domain: String!, event: EventType!, start: DateTime, end: DateTime, resolution: String): [DomainStats!]!
+
+  # Credentials
+  credentials(domain: String!): [Credential!]!
+
+  # Events
+  events(domain: String!, event: EventType, recipient: String, from: DateTime, to: DateTime, limit: Int, page: String): EventConnection!
+
+  # Logs
+  logs(domain: String!, limit: Int): [Log!]!
+
+  # Mailing Lists
+  mailingLists(domain: String, limit: Int, page: String): [MailingList!]!
+  mailingList(address: String!): MailingList
+  members(mailingListAddress: String!, subscribed: Boolean, limit: Int, page: String): [Member!]!
+  member(mailingListAddress: String!, address: String!): Member
+
+  # Suppressions
+  bounces(domain: String!, limit: Int, page: String): [BounceRecord!]!
+  bounce(domain: String!, address: String!): BounceRecord
+  complaints(domain: String!, limit: Int, page: String): [Complaint!]!
+  complaint(domain: String!, address: String!): Complaint
+  unsubscriptions(domain: String!, limit: Int, page: String): [Unsubscription!]!
+  unsubscription(domain: String!, address: String!): Unsubscription
+
+  # Tags
+  tags(domain: String!, limit: Int, page: String): [Tag!]!
+  tag(domain: String!, name: String!): Tag
+
+  # Webhooks
+  webhooks(domain: String!): [Webhook!]!
+  webhook(domain: String!, eventType: EventType!): Webhook
+
+  # Routes
+  routes(skip: Int, limit: Int): [Route!]!
+  route(id: String!): Route
+
+  # Templates
+  templates(domain: String!, page: String, limit: Int): [Template!]!
+  template(domain: String!, name: String!): Template
+
+  # Storage
+  storedMessage(url: String!): Storage
+
+  # Validation
+  validateEmail(address: String!, mailboxVerification: Boolean): Validation!
+  validateBatch(id: String!): Batch
+  batches(domain: String!): [Batch!]!
+}
+
+# ─── Mutations ────────────────────────────────────────────────────────────────
+
+type Mutation {
+  # Sending
+  sendMessage(input: SendMessageInput!): Sending!
+
+  # Domains
+  createDomain(name: String!, smtpPassword: String, spamAction: SpamAction, wildcard: Boolean, forceDkimAuthority: Boolean, dkimKeySize: Int, ips: [String!], webScheme: String, requireTLS: Boolean): Domain!
+  deleteDomain(name: String!): Boolean!
+  updateDomain(name: String!, spamAction: SpamAction, webScheme: String, requireTLS: Boolean, noVerify: Boolean): Domain!
+  verifyDomain(name: String!): Domain!
+
+  # Credentials
+  createCredential(domain: String!, login: String!, password: String!): Credential!
+  updateCredential(domain: String!, login: String!, password: String!): Credential!
+  deleteCredential(domain: String!, login: String!): Boolean!
+
+  # Webhooks
+  createWebhook(input: CreateWebhookInput!): Webhook!
+  updateWebhook(domain: String!, eventType: EventType!, url: String!): Webhook!
+  deleteWebhook(domain: String!, eventType: EventType!): Boolean!
+
+  # Routes
+  createRoute(input: CreateRouteInput!): Route!
+  updateRoute(id: String!, priority: Int, description: String, expression: String, actions: [String!]): Route!
+  deleteRoute(id: String!): Boolean!
+
+  # Mailing Lists
+  createMailingList(input: CreateMailingListInput!): MailingList!
+  updateMailingList(address: String!, name: String, description: String, accessLevel: MailingListAccess, replyPreference: ReplyPreference): MailingList!
+  deleteMailingList(address: String!): Boolean!
+  createMember(mailingListAddress: String!, input: CreateMemberInput!): Member!
+  updateMember(mailingListAddress: String!, address: String!, name: String, subscribed: Boolean, vars: JSON): Member!
+  deleteMember(mailingListAddress: String!, address: String!): Boolean!
+
+  # Suppressions
+  createBounce(domain: String!, address: String!, code: String, error: String, createdAt: DateTime): BounceRecord!
+  deleteBounce(domain: String!, address: String!): Boolean!
+  deleteAllBounces(domain: String!): Boolean!
+  createComplaint(domain: String!, address: String!): Complaint!
+  deleteComplaint(domain: String!, address: String!): Boolean!
+  deleteAllComplaints(domain: String!): Boolean!
+  createUnsubscription(domain: String!, address: String!, tag: String): Unsubscription!
+  deleteUnsubscription(domain: String!, address: String!): Boolean!
+  deleteAllUnsubscriptions(domain: String!): Boolean!
+
+  # Templates
+  createTemplate(domain: String!, input: CreateTemplateInput!): Template!
+  updateTemplate(domain: String!, name: String!, description: String): Template!
+  deleteTemplate(domain: String!, name: String!): Boolean!
+  deleteAllTemplates(domain: String!): Boolean!
+
+  # Tags
+  updateTag(domain: String!, name: String!, description: String): Tag!
+  deleteTag(domain: String!, name: String!): Boolean!
+
+  # Validation Batch
+  createValidationBatch(domain: String!, file: String!): Batch!
+  cancelValidationBatch(id: String!): Boolean!
+}
