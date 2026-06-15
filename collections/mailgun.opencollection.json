@@ -1,0 +1,495 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mailgun API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send an email via the HTTP API",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/:domain/messages",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Verified sending domain (e.g. mg.example.com)"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "from",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "cc",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "bcc",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "subject",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "text",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "html",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "template",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "o:tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "o:tracking",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Send an email via the HTTP API"
+        },
+        {
+          "info": {
+            "name": "Send a pre-built MIME message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/:domain/messages.mime",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "to",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Send a pre-built MIME message"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/domains"
+          },
+          "docs": "List domains"
+        },
+        {
+          "info": {
+            "name": "Create a domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/domains",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                },
+                {
+                  "name": "smtp_password",
+                  "value": ""
+                },
+                {
+                  "name": "spam_action",
+                  "value": ""
+                },
+                {
+                  "name": "wildcard",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a domain"
+        },
+        {
+          "info": {
+            "name": "Get a domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/domains/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a domain"
+        },
+        {
+          "info": {
+            "name": "Delete a domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mailgun.net/v3/domains/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a domain"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query the events log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/:domain/events",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "event",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query the events log"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhooks for a domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/domains/:domain/webhooks",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List webhooks for a domain"
+        },
+        {
+          "info": {
+            "name": "Create a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/domains/:domain/webhooks",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "id",
+                  "value": ""
+                },
+                {
+                  "name": "url",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a webhook"
+        },
+        {
+          "info": {
+            "name": "Delete a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mailgun.net/v3/domains/:domain/webhooks/:type",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a webhook"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Suppressions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List bounced addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/:domain/bounces",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List bounced addresses"
+        },
+        {
+          "info": {
+            "name": "List unsubscribed addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/:domain/unsubscribes",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List unsubscribed addresses"
+        },
+        {
+          "info": {
+            "name": "List complaints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/:domain/complaints",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List complaints"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Mailing Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List mailing lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/lists"
+          },
+          "docs": "List mailing lists"
+        },
+        {
+          "info": {
+            "name": "Create a mailing list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/lists",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "address",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a mailing list"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Routes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List inbound routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/routes"
+          },
+          "docs": "List inbound routes"
+        },
+        {
+          "info": {
+            "name": "Create an inbound route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/routes",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "priority",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "expression",
+                  "value": ""
+                },
+                {
+                  "name": "action",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create an inbound route"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
