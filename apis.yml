@@ -6,7 +6,7 @@ description: Mailgun (by Sinch) is a transactional email API service for develop
   suppression management, and email validation with regional endpoints for US and
   EU data residency.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Email
 - Transactional Email
