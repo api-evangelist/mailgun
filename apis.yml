@@ -60,6 +60,12 @@ apis:
   - type: Documentation
     url: https://documentation.mailgun.com/docs/validate/api-overview
 common:
+- type: TrustCenter
+  url: security/mailgun-trust-center.yml
+- type: DomainSecurity
+  url: security/mailgun-domain-security.yml
+- type: Authentication
+  url: authentication/mailgun-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/mailgun
 - type: LinkedIn
@@ -74,6 +80,8 @@ common:
   url: https://www.mailgun.com/pricing/
 - type: DeveloperPortal
   url: https://documentation.mailgun.com/
+- type: Blog
+  url: https://www.mailgun.com/blog/feed/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
