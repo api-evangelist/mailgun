@@ -60,6 +60,8 @@ apis:
   - type: Documentation
     url: https://documentation.mailgun.com/docs/validate/api-overview
 common:
+- type: AgenticAccess
+  url: agentic-access/mailgun-agentic-access.yml
 - type: TrustCenter
   url: security/mailgun-trust-center.yml
 - type: DomainSecurity
