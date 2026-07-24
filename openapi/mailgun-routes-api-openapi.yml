@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: Mailgun Domains Routes API
+  description: Mailgun (by Sinch) is a transactional email API platform offering message send, inbound routing, suppression management, list management, webhooks, and event analytics. The HTTP API uses HTTP Basic Authentication with the literal username `api` and the account API key as the password. Regional endpoints are available for US (`api.mailgun.net`) and EU (`api.eu.mailgun.net`) data residency.
+  version: 3.0.0
+  contact:
+    name: Mailgun
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+servers:
+- url: https://api.mailgun.net/v3
+  description: US region
+- url: https://api.eu.mailgun.net/v3
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Routes
+paths:
+  /routes:
+    get:
+      tags:
+      - Routes
+      summary: List inbound routes
+      operationId: listRoutes
+      responses:
+        '200':
+          description: Routes
+    post:
+      tags:
+      - Routes
+      summary: Create an inbound route
+      operationId: createRoute
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - expression
+              - action
+              properties:
+                priority:
+                  type: integer
+                description:
+                  type: string
+                expression:
+                  type: string
+                action:
+                  type: string
+      responses:
+        '200':
+          description: Route
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with username `api` and your Mailgun API key as the password.

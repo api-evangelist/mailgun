@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  title: Mailgun Domains Messages API
+  description: Mailgun (by Sinch) is a transactional email API platform offering message send, inbound routing, suppression management, list management, webhooks, and event analytics. The HTTP API uses HTTP Basic Authentication with the literal username `api` and the account API key as the password. Regional endpoints are available for US (`api.mailgun.net`) and EU (`api.eu.mailgun.net`) data residency.
+  version: 3.0.0
+  contact:
+    name: Mailgun
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+servers:
+- url: https://api.mailgun.net/v3
+  description: US region
+- url: https://api.eu.mailgun.net/v3
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Messages
+paths:
+  /{domain}/messages:
+    post:
+      tags:
+      - Messages
+      summary: Send an email via the HTTP API
+      operationId: sendMessage
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        description: Verified sending domain (e.g. mg.example.com)
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - from
+              - to
+              - subject
+              properties:
+                from:
+                  type: string
+                to:
+                  type: string
+                cc:
+                  type: string
+                bcc:
+                  type: string
+                subject:
+                  type: string
+                text:
+                  type: string
+                html:
+                  type: string
+                template:
+                  type: string
+                o:tag:
+                  type: string
+                o:tracking:
+                  type: string
+      responses:
+        '200':
+          description: Message accepted; response includes Mailgun message ID.
+  /{domain}/messages.mime:
+    post:
+      tags:
+      - Messages
+      summary: Send a pre-built MIME message
+      operationId: sendMimeMessage
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - to
+              - message
+              properties:
+                to:
+                  type: string
+                message:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Message accepted
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with username `api` and your Mailgun API key as the password.

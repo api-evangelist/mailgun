@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: Mailgun Domains API
+  description: Mailgun (by Sinch) is a transactional email API platform offering message send, inbound routing, suppression management, list management, webhooks, and event analytics. The HTTP API uses HTTP Basic Authentication with the literal username `api` and the account API key as the password. Regional endpoints are available for US (`api.mailgun.net`) and EU (`api.eu.mailgun.net`) data residency.
+  version: 3.0.0
+  contact:
+    name: Mailgun
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+servers:
+- url: https://api.mailgun.net/v3
+  description: US region
+- url: https://api.eu.mailgun.net/v3
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Domains
+paths:
+  /domains:
+    get:
+      tags:
+      - Domains
+      summary: List domains
+      operationId: listDomains
+      responses:
+        '200':
+          description: Domains
+    post:
+      tags:
+      - Domains
+      summary: Create a domain
+      operationId: createDomain
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                smtp_password:
+                  type: string
+                spam_action:
+                  type: string
+                wildcard:
+                  type: boolean
+      responses:
+        '200':
+          description: Domain
+  /domains/{name}:
+    get:
+      tags:
+      - Domains
+      summary: Get a domain
+      operationId: getDomain
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Domain
+    delete:
+      tags:
+      - Domains
+      summary: Delete a domain
+      operationId: deleteDomain
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with username `api` and your Mailgun API key as the password.

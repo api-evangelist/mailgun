@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Mailgun Domains Suppressions API
+  description: Mailgun (by Sinch) is a transactional email API platform offering message send, inbound routing, suppression management, list management, webhooks, and event analytics. The HTTP API uses HTTP Basic Authentication with the literal username `api` and the account API key as the password. Regional endpoints are available for US (`api.mailgun.net`) and EU (`api.eu.mailgun.net`) data residency.
+  version: 3.0.0
+  contact:
+    name: Mailgun
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+servers:
+- url: https://api.mailgun.net/v3
+  description: US region
+- url: https://api.eu.mailgun.net/v3
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Suppressions
+paths:
+  /{domain}/bounces:
+    get:
+      tags:
+      - Suppressions
+      summary: List bounced addresses
+      operationId: listBounces
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Bounces
+  /{domain}/unsubscribes:
+    get:
+      tags:
+      - Suppressions
+      summary: List unsubscribed addresses
+      operationId: listUnsubscribes
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Unsubscribes
+  /{domain}/complaints:
+    get:
+      tags:
+      - Suppressions
+      summary: List complaints
+      operationId: listComplaints
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Complaints
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with username `api` and your Mailgun API key as the password.

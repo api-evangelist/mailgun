@@ -1,0 +1,47 @@
+openapi: 3.1.0
+info:
+  title: Mailgun Domains Events API
+  description: Mailgun (by Sinch) is a transactional email API platform offering message send, inbound routing, suppression management, list management, webhooks, and event analytics. The HTTP API uses HTTP Basic Authentication with the literal username `api` and the account API key as the password. Regional endpoints are available for US (`api.mailgun.net`) and EU (`api.eu.mailgun.net`) data residency.
+  version: 3.0.0
+  contact:
+    name: Mailgun
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+servers:
+- url: https://api.mailgun.net/v3
+  description: US region
+- url: https://api.eu.mailgun.net/v3
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Events
+paths:
+  /{domain}/events:
+    get:
+      tags:
+      - Events
+      summary: Query the events log
+      operationId: listEvents
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: event
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Events
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with username `api` and your Mailgun API key as the password.
