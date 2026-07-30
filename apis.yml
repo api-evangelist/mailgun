@@ -6,7 +6,19 @@ description: Mailgun (by Sinch) is a transactional email API service for develop
   suppression management, and email validation with regional endpoints for US and
   EU data residency.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mailgun.png
 tags:
 - Email
 - Transactional Email
@@ -19,37 +31,11 @@ created: '2026-05-11'
 modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
-- aid: mailgun:send-api
-  name: Mailgun Send API
-  description: REST API for sending transactional and marketing email, managing domains,
-    mailing lists, templates, suppressions, webhooks, events, and inbound routes.
-    Authentication uses HTTP Basic Auth with an API key.
-  humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
-  baseURL: https://api.mailgun.net
-  tags:
-  - Email
-  - Send
-  - Domains
-  - Webhooks
-  - Routes
-  - Events
-  properties:
-  - type: Documentation
-    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
-  - type: API Overview
-    url: https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview
-  - type: Authentication
-    url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
-  - type: OpenAPI
-    url: https://documentation.mailgun.com/_spec/docs/mailgun/api-reference/send/mailgun.yaml
-  - type: AsyncAPI
-    url: https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
-  - url: graphql/mailgun-graphql.md
-    type: GraphQL
 - aid: mailgun:validate-api
   name: Mailgun Email Validation API
-  description: REST API for verifying email addresses in real time, bulk list validation,
-    and deliverability scoring to reduce bounces and improve sender reputation.
+  description: >-
+    REST API for verifying email addresses in real time, bulk list validation, and deliverability scoring
+    to reduce bounces and improve sender reputation.
   humanURL: https://documentation.mailgun.com/docs/validate/api-overview
   baseURL: https://api.mailgun.net
   tags:
@@ -59,6 +45,153 @@ apis:
   properties:
   - type: Documentation
     url: https://documentation.mailgun.com/docs/validate/api-overview
+- aid: mailgun:mailgun-domains-api
+  name: Mailgun Domains API
+  description: The Domains API from Mailgun — 2 operation(s) for domains.
+  humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  baseURL: https://api.mailgun.net
+  tags:
+  - Domains
+  properties:
+  - type: OpenAPI
+    url: openapi/mailgun-domains-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  - type: API Overview
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview
+  - type: Authentication
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/mailgun-graphql.md
+- aid: mailgun:mailgun-events-api
+  name: Mailgun Events API
+  description: The Events API from Mailgun — 1 operation(s) for events.
+  humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  baseURL: https://api.mailgun.net
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/mailgun-events-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  - type: API Overview
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview
+  - type: Authentication
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/mailgun-graphql.md
+- aid: mailgun:mailgun-mailing-lists-api
+  name: Mailgun Mailing Lists API
+  description: The Mailing Lists API from Mailgun — 1 operation(s) for mailing lists.
+  humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  baseURL: https://api.mailgun.net
+  tags:
+  - Mailing Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/mailgun-mailing-lists-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  - type: API Overview
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview
+  - type: Authentication
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/mailgun-graphql.md
+- aid: mailgun:mailgun-messages-api
+  name: Mailgun Messages API
+  description: The Messages API from Mailgun — 2 operation(s) for messages.
+  humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  baseURL: https://api.mailgun.net
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/mailgun-messages-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  - type: API Overview
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview
+  - type: Authentication
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/mailgun-graphql.md
+- aid: mailgun:mailgun-routes-api
+  name: Mailgun Routes API
+  description: The Routes API from Mailgun — 1 operation(s) for routes.
+  humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  baseURL: https://api.mailgun.net
+  tags:
+  - Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/mailgun-routes-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  - type: API Overview
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview
+  - type: Authentication
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/mailgun-graphql.md
+- aid: mailgun:mailgun-suppressions-api
+  name: Mailgun Suppressions API
+  description: The Suppressions API from Mailgun — 3 operation(s) for suppressions.
+  humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  baseURL: https://api.mailgun.net
+  tags:
+  - Suppressions
+  properties:
+  - type: OpenAPI
+    url: openapi/mailgun-suppressions-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  - type: API Overview
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview
+  - type: Authentication
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/mailgun-graphql.md
+- aid: mailgun:mailgun-webhooks-api
+  name: Mailgun Webhooks API
+  description: The Webhooks API from Mailgun — 2 operation(s) for webhooks.
+  humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  baseURL: https://api.mailgun.net
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/mailgun-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/
+  - type: API Overview
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview
+  - type: Authentication
+    url: https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth
+  - type: AsyncAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/mailgun-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/mailgun-agentic-access.yml
