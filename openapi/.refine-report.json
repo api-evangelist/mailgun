@@ -1,0 +1,26 @@
+{
+  "provider": "mailgun",
+  "sources": [
+    "mailgun-domains-api-openapi.yml",
+    "mailgun-events-api-openapi.yml",
+    "mailgun-mailing-lists-api-openapi.yml",
+    "mailgun-messages-api-openapi.yml",
+    "mailgun-routes-api-openapi.yml",
+    "mailgun-suppressions-api-openapi.yml",
+    "mailgun-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "mailgun-domains-api-openapi.yml",
+    "mailgun-events-api-openapi.yml",
+    "mailgun-mailing-lists-api-openapi.yml",
+    "mailgun-messages-api-openapi.yml",
+    "mailgun-routes-api-openapi.yml",
+    "mailgun-suppressions-api-openapi.yml",
+    "mailgun-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
