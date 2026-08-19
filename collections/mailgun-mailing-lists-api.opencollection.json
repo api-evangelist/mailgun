@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mailgun Domains Mailing Lists API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mailing Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List mailing lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/lists"
+          },
+          "docs": "List mailing lists"
+        },
+        {
+          "info": {
+            "name": "Create a mailing list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/lists",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "address",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a mailing list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

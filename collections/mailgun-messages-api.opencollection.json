@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mailgun Domains Messages API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send an email via the HTTP API",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/:domain/messages",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Verified sending domain (e.g. mg.example.com)"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "from",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "to",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "cc",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "bcc",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "subject",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "text",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "html",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "template",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "o:tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "o:tracking",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Send an email via the HTTP API"
+        },
+        {
+          "info": {
+            "name": "Send a pre-built MIME message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/:domain/messages.mime",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "to",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Send a pre-built MIME message"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

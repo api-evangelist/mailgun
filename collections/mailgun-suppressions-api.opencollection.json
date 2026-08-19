@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mailgun Domains Suppressions API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suppressions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List bounced addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/:domain/bounces",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List bounced addresses"
+        },
+        {
+          "info": {
+            "name": "List unsubscribed addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/:domain/unsubscribes",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List unsubscribed addresses"
+        },
+        {
+          "info": {
+            "name": "List complaints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/:domain/complaints",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List complaints"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

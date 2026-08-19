@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mailgun Domains Routes API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Routes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List inbound routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mailgun.net/v3/routes"
+          },
+          "docs": "List inbound routes"
+        },
+        {
+          "info": {
+            "name": "Create an inbound route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mailgun.net/v3/routes",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "priority",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "value": ""
+                },
+                {
+                  "name": "expression",
+                  "value": ""
+                },
+                {
+                  "name": "action",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create an inbound route"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
