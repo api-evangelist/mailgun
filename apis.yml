@@ -72,6 +72,8 @@ apis:
   humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
   baseURL: https://api.mailgun.net
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -114,6 +116,8 @@ apis:
   humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
   baseURL: https://api.mailgun.net
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -177,6 +181,8 @@ apis:
   humanURL: https://documentation.mailgun.com/docs/mailgun/api-reference/
   baseURL: https://api.mailgun.net
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
