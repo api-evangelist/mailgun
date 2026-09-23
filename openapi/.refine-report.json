@@ -1,13 +1,7 @@
 {
   "provider": "mailgun",
   "sources": [
-    "mailgun-domains-api-openapi.yml",
-    "mailgun-events-api-openapi.yml",
-    "mailgun-mailing-lists-api-openapi.yml",
-    "mailgun-messages-api-openapi.yml",
-    "mailgun-routes-api-openapi.yml",
-    "mailgun-suppressions-api-openapi.yml",
-    "mailgun-webhooks-api-openapi.yml"
+    "_original/mailgun-openapi.yml"
   ],
   "outputs": [
     "mailgun-domains-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mailgun-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mailgun-domains-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mailgun-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mailgun-mailing-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mailgun-messages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mailgun-routes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mailgun-suppressions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mailgun-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
