@@ -36,6 +36,13 @@ tags:
 - Email
 - Transactional Email
 - SMTP
+- Email Verification
+- Email Delivery
+- Messaging
+tags_raw:
+- Email
+- Transactional Email
+- SMTP
 - Email Validation
 - Email Delivery
 - Messaging
@@ -52,6 +59,10 @@ apis:
   humanURL: https://documentation.mailgun.com/docs/validate/api-overview
   baseURL: https://api.mailgun.net
   tags:
+  - Email Verification
+  - Verification
+  - Deliverability
+  tags_raw:
   - Email Validation
   - Verification
   - Deliverability
@@ -77,8 +88,6 @@ apis:
   - type: AsyncAPI
     url: >-
       https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/mailgun-graphql.md
 - aid: mailgun:mailgun-events-api
   name: Mailgun Events API
   description: The Events API from Mailgun — 1 operation(s) for events.
@@ -100,8 +109,6 @@ apis:
   - type: AsyncAPI
     url: >-
       https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/mailgun-graphql.md
 - aid: mailgun:mailgun-mailing-lists-api
   name: Mailgun Mailing Lists API
   description: The Mailing Lists API from Mailgun — 1 operation(s) for mailing lists.
@@ -121,8 +128,6 @@ apis:
   - type: AsyncAPI
     url: >-
       https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/mailgun-graphql.md
 - aid: mailgun:mailgun-messages-api
   name: Mailgun Messages API
   description: The Messages API from Mailgun — 2 operation(s) for messages.
@@ -144,8 +149,6 @@ apis:
   - type: AsyncAPI
     url: >-
       https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/mailgun-graphql.md
 - aid: mailgun:mailgun-routes-api
   name: Mailgun Routes API
   description: The Routes API from Mailgun — 1 operation(s) for routes.
@@ -165,8 +168,6 @@ apis:
   - type: AsyncAPI
     url: >-
       https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/mailgun-graphql.md
 - aid: mailgun:mailgun-suppressions-api
   name: Mailgun Suppressions API
   description: The Suppressions API from Mailgun — 3 operation(s) for suppressions.
@@ -186,8 +187,6 @@ apis:
   - type: AsyncAPI
     url: >-
       https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/mailgun-graphql.md
 - aid: mailgun:mailgun-webhooks-api
   name: Mailgun Webhooks API
   description: The Webhooks API from Mailgun — 2 operation(s) for webhooks.
@@ -209,8 +208,6 @@ apis:
   - type: AsyncAPI
     url: >-
       https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/mailgun-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/mailgun-agentic-access.yml
