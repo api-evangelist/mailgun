@@ -20,7 +20,7 @@
     matched_domain: mailgun.com
     detected_by: sweep-cpaas.py
     detected: '2026-10-12'
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: mailgun-novu
   label: novu
@@ -39,5 +39,17 @@
     matched_domain: mailgun.com
     detected_by: sweep-cpaas.py
     detected: '2026-10-12'
-  status: pending-generation
+  status: not-a-workflow
+  arazzo: null
+- slug: mailgun-census
+  label: Census
+  partner: getcensus
+  partner_name: Census
+  type: coverage
+  marketplace: coverage
+  channel: partner-built
+  evidence: https://fivetran.com/docs/activations/destinations/available-destinations/mailgun
+  source: edge
+  relationship: connector-coverage
+  status: not-a-workflow
   arazzo: null
