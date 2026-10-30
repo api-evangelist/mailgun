@@ -1,4 +1,4 @@
-# Mailgun (mailgun)
+# Mailgun
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,84 +66,120 @@
 
 Mailgun (by Sinch) is a transactional email API service for developers to send, receive, validate, and track emails at scale. The platform provides SMTP and HTTP APIs for sending email, inbound message routing, deliverability analytics, suppression management, and email validation with regional endpoints for US and EU data residency.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/apis.yml)
+**Areas:** Email · Transactional Email · SMTP · Email Verification · Email Delivery · Messaging
 
-## Scope
+## Mailgun on APIs.io
 
-- **Type:** Index
+Everything profiled for Mailgun is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mailgun/](https://apis.io/providers/mailgun/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (8)
 
-- Email
-- Transactional Email
-- SMTP
-- Email Validation
-- Email Delivery
-- Messaging
+- [Mailgun Email Validation API](https://apis.io/apis/mailgun/validate-api/) — REST API for verifying email addresses in real time, bulk list validation, and deliverability scoring to reduce bounces and improve sender reputation.
+- [Mailgun Domains API](https://apis.io/apis/mailgun/mailgun-domains-api/) — The Domains API from Mailgun — 2 operation(s) for domains.
+- [Mailgun Events API](https://apis.io/apis/mailgun/mailgun-events-api/) — The Events API from Mailgun — 1 operation(s) for events.
+- [Mailgun Mailing Lists API](https://apis.io/apis/mailgun/mailgun-mailing-lists-api/) — The Mailing Lists API from Mailgun — 1 operation(s) for mailing lists.
+- [Mailgun Messages API](https://apis.io/apis/mailgun/mailgun-messages-api/) — The Messages API from Mailgun — 2 operation(s) for messages.
+- [Mailgun Routes API](https://apis.io/apis/mailgun/mailgun-routes-api/) — The Routes API from Mailgun — 1 operation(s) for routes.
+- [Mailgun Suppressions API](https://apis.io/apis/mailgun/mailgun-suppressions-api/) — The Suppressions API from Mailgun — 3 operation(s) for suppressions.
+- [Mailgun Webhooks API](https://apis.io/apis/mailgun/mailgun-webhooks-api/) — The Webhooks API from Mailgun — 2 operation(s) for webhooks.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### Mailgun Send API
+GraphQL schemas.
 
-REST API for sending transactional and marketing email, managing domains, mailing lists, templates, suppressions, webhooks, events, and inbound routes. Authentication uses HTTP Basic Auth with an API key.
+- [Moved to /providers/mailgun/](https://apis.io/graphqls/mailgun/mailgun-graphql/)
 
-- **Human URL:** [https://documentation.mailgun.com/docs/mailgun/api-reference/](https://documentation.mailgun.com/docs/mailgun/api-reference/)
-- **Base URL:** `https://api.mailgun.net`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Email
-- Send
-- Domains
-- Webhooks
-- Routes
-- Events
+- [Mailgun Agentic Access](https://apis.io/agentic-access/mailgun/mailgun-agentic-access/)
 
-#### Properties
+#### Collections (9)
 
-- [Documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/)
-- [A P I  Overview](https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview)
-- [Authentication](https://documentation.mailgun.com/docs/mailgun/api-reference/mg-auth)
-- [OpenAPI](https://documentation.mailgun.com/_spec/docs/mailgun/api-reference/send/mailgun.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [AsyncAPI](https://raw.githubusercontent.com/api-evangelist/mailgun/refs/heads/main/openapi/mailgun-webhooks-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Postman Collection](collections/mailgun.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mailgun.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-### Mailgun Email Validation API
+- [Mailgun API](https://apis.io/collections/mailgun/open-mailgun/)
+- [Mailgun Domains API](https://apis.io/collections/mailgun/open-mailgun-domains-api/)
+- [Mailgun Domains Events API](https://apis.io/collections/mailgun/open-mailgun-events-api/)
+- [Mailgun Domains Mailing Lists API](https://apis.io/collections/mailgun/open-mailgun-mailing-lists-api/)
+- [Mailgun Domains Messages API](https://apis.io/collections/mailgun/open-mailgun-messages-api/)
+- [Mailgun Domains Routes API](https://apis.io/collections/mailgun/open-mailgun-routes-api/)
+- [Mailgun Domains Suppressions API](https://apis.io/collections/mailgun/open-mailgun-suppressions-api/)
+- [Mailgun Domains Webhooks API](https://apis.io/collections/mailgun/open-mailgun-webhooks-api/)
+- [Mailgun Webhooks](https://apis.io/collections/mailgun/open-mailgun-webhooks-asyncapi/)
 
-REST API for verifying email addresses in real time, bulk list validation, and deliverability scoring to reduce bounces and improve sender reputation.
+#### Security (3)
 
-- **Human URL:** [https://documentation.mailgun.com/docs/validate/api-overview](https://documentation.mailgun.com/docs/validate/api-overview)
-- **Base URL:** `https://api.mailgun.net`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Mailgun Authentication](https://apis.io/security/mailgun/mailgun-authentication/)
+- [Mailgun Domain Security](https://apis.io/security/mailgun/mailgun-domain-security/)
+- [Mailgun Trust Center](https://apis.io/security/mailgun/mailgun-trust-center/)
 
-- Email Validation
-- Verification
-- Deliverability
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://documentation.mailgun.com/docs/validate/api-overview)
-- [Postman Collection](collections/mailgun.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mailgun.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/mailgun)
-- [LinkedIn](https://www.linkedin.com/company/mailgun)
 - [Website](https://www.mailgun.com)
 - [Documentation](https://documentation.mailgun.com/)
-- [Sign Up](https://signup.mailgun.com/new/signup)
 - [Pricing](https://www.mailgun.com/pricing/)
-- [Developer  Portal](https://documentation.mailgun.com/)
+- [Blog](https://www.mailgun.com/blog/feed/)
+- [GitHub](https://github.com/mailgun)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 45.9 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 31.6 |
+
+**Agent readiness 17.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mailgun/](https://apis.io/providers/mailgun/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mailgun: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mailgun/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
